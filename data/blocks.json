@@ -1,0 +1,14 @@
+{
+  "blocks": [
+    { "id": 0, "name": "air", "solid": false },
+    { "id": 1, "name": "grass", "solid": true, "color": "#5d9c3d" },
+    { "id": 2, "name": "dirt", "solid": true, "color": "#8b5a2b" },
+    { "id": 3, "name": "stone", "solid": true, "color": "#888888" },
+    { "id": 4, "name": "wood", "solid": true, "color": "#6b4423" },
+    { "id": 5, "name": "leaves", "solid": true, "color": "#3a7d34" },
+    { "id": 6, "name": "sand", "solid": true, "color": "#e0c98f" },
+    { "id": 7, "name": "water", "solid": false, "color": "#3a7ca5" },
+    { "id": 8, "name": "screen", "solid": true, "color": "#222233", "special": true },
+    { "id": 9, "name": "bedrock", "solid": true, "color": "#333333" }
+  ]
+}

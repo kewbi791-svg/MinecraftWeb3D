@@ -1,0 +1,12 @@
+{
+  "name": "minecraftweb3d-server",
+  "version": "1.0.0",
+  "description": "WebSocket server for MinecraftWeb3D multiplayer",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "ws": "^8.16.0"
+  }
+}
