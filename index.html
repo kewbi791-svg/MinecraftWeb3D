@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MinecraftWeb3D</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+      "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+    }
+  }
+  </script>
+</head>
+<body>
+  <div id="game-container">
+    <canvas id="game-canvas"></canvas>
+
+    <!-- Crosshair -->
+    <div id="crosshair">+</div>
+
+    <!-- HUD -->
+    <div id="hud">
+      <div id="coords">X: 0 Y: 0 Z: 0</div>
+      <div id="fps">FPS: --</div>
+      <div id="block-info">Bloco: Grama</div>
+    </div>
+
+    <!-- Notificações TikTok -->
+    <div id="notifications"></div>
+
+    <!-- Painel do Telão (Shift + B) -->
+    <div id="screen-panel" class="panel hidden">
+      <div class="panel-header">
+        <h2>Telão Interativo</h2>
+        <button id="close-screen" class="btn-close">×</button>
+      </div>
+      <div class="panel-body">
+        <div class="tabs">
+          <button class="tab active" data-tab="url">URL / Link</button>
+          <button class="tab" data-tab="search">Busca</button>
+          <button class="tab" data-tab="capture">Captura de Tela</button>
+          <button class="tab" data-tab="browser">Mini Navegador</button>
+        </div>
+
+        <div id="tab-url" class="tab-content active">
+          <label>Cole a URL que deseja exibir no telão:</label>
+          <input type="url" id="screen-url" placeholder="https://exemplo.com" />
+          <button id="apply-url" class="btn">Aplicar no Telão</button>
+          <p class="hint">O conteúdo será mostrado em um iframe no bloco de telão mais próximo.</p>
+        </div>
+
+        <div id="tab-search" class="tab-content">
+          <input type="text" id="search-query" placeholder="Pesquisar..." />
+          <div class="search-sources">
+            <label><input type="checkbox" value="wikipedia" checked /> Wikipedia</label>
+            <label><input type="checkbox" value="sportsdb" checked /> TheSportsDB</label>
+            <label><input type="checkbox" value="tvmaze" checked /> TVMaze</label>
+            <label><input type="checkbox" value="duckduckgo" checked /> DuckDuckGo</label>
+          </div>
+          <button id="do-search" class="btn">Pesquisar</button>
+          <div id="search-results"></div>
+        </div>
+
+        <div id="tab-capture" class="tab-content">
+          <p>O navegador só permite compartilhar tela ou uma janela específica com sua autorização.</p>
+          <button id="start-capture" class="btn">Compartilhar Tela / Janela</button>
+          <button id="stop-capture" class="btn btn-danger" disabled>Parar Captura</button>
+          <video id="capture-preview" autoplay muted playsinline></video>
+        </div>
+
+        <div id="tab-browser" class="tab-content">
+          <div class="browser-bar">
+            <input type="text" id="browser-url" placeholder="https://..." />
+            <button id="browser-go" class="btn">Ir</button>
+          </div>
+          <iframe id="mini-browser" sandbox="allow-scripts allow-same-origin allow-forms"></iframe>
+        </div>
+      </div>
+    </div>
+
+    <!-- Configurações / Inventário (E) -->
+    <div id="settings-panel" class="panel hidden">
+      <div class="panel-header">
+        <h2>Configurações</h2>
+        <button id="close-settings" class="btn-close">×</button>
+      </div>
+      <div class="panel-body">
+        <h3>TikTok Live</h3>
+        <label>Username da conta que está em live (sem @):</label>
+        <input type="text" id="tiktok-username" placeholder="seuusuario" />
+        <button id="connect-tiktok" class="btn">Conectar</button>
+        <p id="tiktok-status" class="status">Desconectado</p>
+        <p class="hint">Precisa de um backend (veja server/tiktok_bridge.py) para funcionar de verdade.</p>
+
+        <h3>WebSocket</h3>
+        <label>URL do servidor:</label>
+        <input type="text" id="ws-url" value="ws://localhost:3001" />
+        <button id="connect-ws" class="btn">Conectar Multiplayer</button>
+        <p id="ws-status" class="status">Desconectado</p>
+
+        <h3>Controles</h3>
+        <p>Shift + B = Telão | E = Configurações | Esc = Liberar mouse</p>
+      </div>
+    </div>
+
+    <!-- Tela de loading / start -->
+    <div id="start-screen">
+      <h1>MinecraftWeb3D</h1>
+      <p>Clique para começar</p>
+      <button id="start-btn" class="btn btn-large">Jogar</button>
+      <p class="credits">WASD + Mouse | Shift+B = Telão | E = Configurações</p>
+    </div>
+  </div>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
